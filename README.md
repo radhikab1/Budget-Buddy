@@ -19,3 +19,15 @@ the general public as they will be able to view their daily transactions and acc
 manner**, and it will allow them to form budgeting strategies around that information. As a student occupied with 
 several responsibilities and tasks, I understand how difficult, yet how important it is to keep track of such 
 information, which is what motivates me to create this application.
+
+## User Stories
+The following are some **user stories** to describe how someone can use this application:
+
+- As a user, I want to be able to add a new account with a specific login ID to my list of accounts
+- As a user, I want to be able to view the list of accounts/login IDs in my budget tracking tool
+- As a user, I want to be able to select a specific account and add a credit to that account, including the date the
+  credit was made, what type of credit it was (the category it falls under), and the amount
+- As a user, I want to be able to select a specific account and add a debt to that account, including the date the debt
+  was made, what type of credit it was (the category it falls under), and the amount
+- As a user, I want to be able to select an account and view my total account balance
+- As a user, I want to be able to select an account and access transactions (credit/debt) for a specific date
