@@ -1,15 +1,15 @@
 package model;
 
-// Represents an Account with an id, name, and current balance
+// Represents an Account with an id, name, and current balance (in dollars)
 public class Account {
     private static int nextAccountId = 1;
     private int accountId;
     private String accountName;
     private double accountBalance;
 
-    // REQUIRES: accountName is not empty, initial balance >= 0
+    // REQUIRES: accountName length is non-zero AND initial balance >= 0
     // EFFECTS: constructs an account with account id set to a positive integer that isn't associated
-    // with any other account; account name is set to given accountName; account balance set to given initialBalance
+    // with any other account; account name set to given accountName; account balance set to given initialBalance
     public Account(String name, double initialBalance) {
         accountId = nextAccountId++;
         accountName = name;
