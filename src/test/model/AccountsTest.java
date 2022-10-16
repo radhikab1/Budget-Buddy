@@ -59,5 +59,21 @@ public class AccountsTest {
         accounts.removeAccount(account1);
         assertEquals(0, accounts.getAccounts().size());
     }
+
+    @Test
+    public void testGetAccountIdsForOneAccount() {
+        accounts.getAccounts().add(account1);
+        assertEquals(1, accounts.getAccountIds().size());
+        assertEquals(1, accounts.getAccountIds().get(0));
+    }
+
+    @Test
+    public void testGetAccountIdsForMultipleAccounts() {
+        accounts.getAccounts().add(account1);
+        accounts.getAccounts().add(account2);
+        assertEquals(2, accounts.getAccountIds().size());
+        assertEquals(9, accounts.getAccountIds().get(0));
+        assertEquals(10, accounts.getAccountIds().get(1));
+    }
 }
 
