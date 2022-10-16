@@ -29,9 +29,7 @@ public class Accounts {
         return accounts;
     }
 
-    //REQUIRES:
-    //MODIFIES:
-    //EFFECTS:
+    //EFFECTS: returns a list of the Ids of each account in accounts
     public List<Integer> getAccountIds() {
         List<Integer> accountIds = new ArrayList<>();
         for (Account account: getAccounts()) {
