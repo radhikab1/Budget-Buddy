@@ -10,6 +10,7 @@ package ui;
 //https://github.students.cs.ubc.ca/CPSC210/LongFormProblemStarters
 // Used to determine how to lookup an account by a field (such as the account Id)
 //
+// Main class. Executes main method and instantiates FinancialManagementApp
 public class Main {
     public static void main(String[] args) {
         new FinancialManagementApp();

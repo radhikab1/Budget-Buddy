@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+// Represents tests for Accounts
 public class AccountsTest {
     private Accounts accounts;
     private Account account1;

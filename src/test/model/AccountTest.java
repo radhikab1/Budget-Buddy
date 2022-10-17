@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// Represents tests for Account
 public class AccountTest {
     private Account testAccount;
 
