@@ -166,7 +166,8 @@ public class FinancialManagementApp {
     }
 
     // MODIFIES: this
-    // EFFECTS:
+    // EFFECTS: constructs an account by prompting user to enter name and initial balance on account,
+    //          then adds it to the accounts list
     private void addAccount() {
         System.out.println("\nEnter name of account to add: ");
         String name = input.next();
