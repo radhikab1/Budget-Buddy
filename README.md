@@ -27,6 +27,9 @@ The following are some **user stories** to describe how someone can use this app
 - As a user, I want to be able to remove an existing account from the list of accounts
 - As a user, I want to be able to select a specific account and add a credit to that account
 - As a user, I want to be able to select a specific account and add a debt to that account
+- As a user, when I select the quit option from the application menu, I want to be reminded to save my accounts list to
+  file and have the option to do so or not.
+- As a user, when I start the application, I want to be given the option to load my accounts list form file.
 
 ## Potential Future User Stories
 The following are *potential* user stories that could be added in future phases of this project:
