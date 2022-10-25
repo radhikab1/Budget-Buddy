@@ -1,13 +1,19 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 // Represents a list of Accounts
-public class Accounts {
+public class AccountsList implements Writable {
+    private String name;
     private List<Account> accounts;
 
-    public Accounts() {
+    public AccountsList(String name) {
+        this.name = name;
         accounts = new ArrayList<>();
     }
 
@@ -36,5 +42,32 @@ public class Accounts {
             accountIds.add(account.getAccountId());
         }
         return accountIds;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int numAccounts() {
+        return accounts.size();
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("accounts", accountsToJson());
+        return json;
+    }
+
+    // EFFECTS: returns accounts in this accounts list
+    private JSONArray accountsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Account a: accounts) {
+            jsonArray.put(a.toJson());
+        }
+
+        return jsonArray;
     }
 }

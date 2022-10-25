@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // Represents an Account with an id, name, and current balance (in dollars)
-public class Account {
+public class Account implements Writable {
     private static int nextAccountId = 1;
     private int accountId;
     private String accountName;
@@ -43,5 +46,19 @@ public class Account {
 
     public double getAccountBalance() {
         return accountBalance;
+    }
+
+    // EFFECTS: returns string representation of this account
+    public String toString() {
+        return accountId + ":" + accountName + ":" + accountBalance;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("id", accountId);
+        json.put("name", accountName);
+        json.put("balance", accountBalance);
+        return json;
     }
 }

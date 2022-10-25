@@ -1,19 +1,27 @@
 package ui;
 
 import model.Account;
-import model.Accounts;
+import model.AccountsList;
+import org.json.JSONWriter;
+import persistence.JsonReader;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 // Financial management application
 public class FinancialManagementApp {
+    private static final String JSON_STORE = "./data/accountslist.json";
     private Scanner input;
-    private Accounts accounts;
+    private AccountsList accounts;
+    //private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // EFFECTS: constructs an empty accounts list then runs the financial management application
     public FinancialManagementApp() {
-        accounts = new Accounts();
+        accounts = new AccountsList("Radhika's AccountsList");
         runFinancialManagement();
+        //jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
     }
 
     // MODIFIES: this
@@ -51,6 +59,8 @@ public class FinancialManagementApp {
             addAccount();
         } else if (command.equals("r")) {
             removeAccount();
+        } else if (command.equals("l")) {
+            loadAccountsList();
         } else {
             System.out.println("\nYour selection was invalid! Please try again...");
         }
@@ -63,6 +73,7 @@ public class FinancialManagementApp {
         System.out.println("\tt -> Select an account to make a transaction (credit or debt)");
         System.out.println("\ta -> Add an account");
         System.out.println("\tr -> Remove an account");
+        System.out.println("\tl -> Load accounts list from file");
         System.out.println("\tq -> Quit");
     }
 
@@ -189,6 +200,17 @@ public class FinancialManagementApp {
         printAccountsAndBalance();
         if (accounts.getAccounts().size() > 0) {
             accounts.removeAccount(selectAccount());
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads accounts list from file
+    private void loadAccountsList() {
+        try {
+            accounts = jsonReader.read();
+            System.out.println("Loaded " + accounts.getName() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 }

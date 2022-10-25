@@ -8,13 +8,13 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 // Represents tests for Accounts
 public class AccountsTest {
-    private Accounts accounts;
+    private AccountsList accounts;
     private Account account1;
     private Account account2;
 
     @BeforeEach
     public void runBefore() {
-        accounts = new Accounts();
+        accounts = new AccountsList("Radhika's AccountsList");
         account1 = new Account("John Smith", 200.00);
         account2 = new Account("Emily Wood", 0.00);
     }
