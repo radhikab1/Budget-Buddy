@@ -2,9 +2,10 @@ package ui;
 
 import model.Account;
 import model.AccountsList;
-import org.json.JSONWriter;
 import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -13,15 +14,15 @@ public class FinancialManagementApp {
     private static final String JSON_STORE = "./data/accountslist.json";
     private Scanner input;
     private AccountsList accounts;
-    //private JsonWriter jsonWriter;
+    private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
     // EFFECTS: constructs an empty accounts list then runs the financial management application
-    public FinancialManagementApp() {
+    public FinancialManagementApp() throws FileNotFoundException {
         accounts = new AccountsList("Radhika's AccountsList");
-        runFinancialManagement();
-        //jsonWriter = new JsonWriter(JSON_STORE);
+        jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
+        runFinancialManagement();
     }
 
     // MODIFIES: this
@@ -59,6 +60,8 @@ public class FinancialManagementApp {
             addAccount();
         } else if (command.equals("r")) {
             removeAccount();
+        } else if (command.equals("s")) {
+            saveAccountsList();
         } else if (command.equals("l")) {
             loadAccountsList();
         } else {
@@ -73,6 +76,7 @@ public class FinancialManagementApp {
         System.out.println("\tt -> Select an account to make a transaction (credit or debt)");
         System.out.println("\ta -> Add an account");
         System.out.println("\tr -> Remove an account");
+        System.out.println("\ts -> Save accounts list to file");
         System.out.println("\tl -> Load accounts list from file");
         System.out.println("\tq -> Quit");
     }
@@ -200,6 +204,18 @@ public class FinancialManagementApp {
         printAccountsAndBalance();
         if (accounts.getAccounts().size() > 0) {
             accounts.removeAccount(selectAccount());
+        }
+    }
+
+    // EFFECTS: saves the accounts list to file
+    private void saveAccountsList() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(accounts);
+            jsonWriter.close();
+            System.out.println("Saved " + accounts.getName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
         }
     }
 

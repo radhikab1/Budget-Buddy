@@ -15,12 +15,10 @@ import java.io.FileNotFoundException;
 // Main class. Executes main method and instantiates FinancialManagementApp
 public class Main {
     public static void main(String[] args) {
-        new FinancialManagementApp();
-
-//        try {
-//            new FinancialManagementApp();
-//        } catch (FileNotFoundException e) {
-//            System.out.println("Unable to run application: file not found");
-//        }
+        try {
+            new FinancialManagementApp();
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to run application: file not found");
+        }
     }
 }

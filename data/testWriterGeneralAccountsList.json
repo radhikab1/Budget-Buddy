@@ -1,0 +1,15 @@
+{
+    "name": "My accounts list",
+    "accounts": [
+        {
+            "balance": 200,
+            "name": "John Smith",
+            "id": 1
+        },
+        {
+            "balance": 0,
+            "name": "Emily Wood",
+            "id": 2
+        }
+    ]
+}

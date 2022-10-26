@@ -19,6 +19,12 @@ public class Account implements Writable {
         accountBalance = initialBalance;
     }
 
+//    public Account(String name, double initialBalance, int id) {
+//        accountId = id;
+//        accountName = name;
+//        accountBalance = initialBalance;
+//    }
+
     // REQUIRES: creditAmount >= 0
     // MODIFIES: this
     // EFFECTS: adds creditAmount to accountBalance, then returns accountBalance
