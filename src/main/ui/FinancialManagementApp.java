@@ -181,19 +181,23 @@ public class FinancialManagementApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: constructs an account by prompting user to enter name and initial balance on account,
+    // EFFECTS: constructs an account by prompting user to enter id, name, and initial balance of account,
     //          then adds it to the accounts list
     private void addAccount() {
+        System.out.println("\nEnter id of account to add. Id must not already be associated with an account:");
+        Integer id = Integer.valueOf(input.next());
         System.out.println("\nEnter name of account to add: ");
         String name = input.next();
         System.out.println("\nEnter initial balance on account: ");
         double initialBalance = input.nextDouble();
 
-        if (initialBalance >= 0.0) {
-            Account account = new Account(name, initialBalance);
-            accounts.addAccount(account);
-        } else {
+        if (initialBalance < 0.0) {
             System.out.println("\nInvalid initial balance, initial balance cannot be zero!");
+        } else if (accounts.getAccountIds().contains(id)) {
+            System.out.println("\nInvalid account id entered. Account id already exists!");
+        } else {
+            Account account = new Account(id, name, initialBalance);
+            accounts.addAccount(account);
         }
     }
 

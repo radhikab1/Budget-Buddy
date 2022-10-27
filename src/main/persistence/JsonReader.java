@@ -61,9 +61,10 @@ public class JsonReader {
     // MODIFIES: al
     // EFFECTS: parses account from JSON object and adds it to accounts list
     private void addAccount(AccountsList al, JSONObject jsonObject) {
+        Integer id = Integer.valueOf(jsonObject.getString("id"));
         String name = jsonObject.getString("name");
         Double balance = Double.valueOf(jsonObject.getString("balance"));
-        Account account = new Account(name, balance);
+        Account account = new Account(id, name, balance);
         al.addAccount(account);
     }
 }

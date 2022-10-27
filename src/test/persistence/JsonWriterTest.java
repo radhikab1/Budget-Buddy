@@ -45,8 +45,8 @@ public class JsonWriterTest extends JsonTest {
     void testWriterGeneralAccountsList() {
         try {
             AccountsList al = new AccountsList("My accounts list");
-            al.addAccount(new Account("John Smith", 200.00));
-            al.addAccount(new Account("Emily Wood", 0.00));
+            al.addAccount(new Account(1, "John Smith", 200.00));
+            al.addAccount(new Account(2, "Emily Wood", 0.00));
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralAccountsList.json");
             writer.open();
             writer.write(al);
@@ -56,8 +56,8 @@ public class JsonWriterTest extends JsonTest {
             al = reader.read();
             assertEquals("My accounts list", al.getName());
             List<Account> accounts = al.getAccounts();
-            checkAccount(3, "John Smith", 200.00, accounts.get(0));
-            checkAccount(4, "Emily Wood", 0.00, accounts.get(1));
+            checkAccount(1, "John Smith", 200.00, accounts.get(0));
+            checkAccount(2, "Emily Wood", 0.00, accounts.get(1));
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }

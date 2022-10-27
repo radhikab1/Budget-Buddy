@@ -1,12 +1,12 @@
 {
   "accounts": [
     {
-      "id": 1,
+      "id": "1",
       "name": "John Smith",
       "balance": "200.00"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Emily Wood",
       "balance": "0.00"
     }

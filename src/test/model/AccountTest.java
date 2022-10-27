@@ -11,12 +11,13 @@ public class AccountTest {
 
     @BeforeEach
     public void runBefore() {
-        testAccount = new Account("John Smith", 200.00);
+        testAccount = new Account(1, "John Smith", 200.00);
     }
 
     @Test
     public void testConstructor() {
         assertTrue(testAccount.getAccountId() > 0);
+        assertEquals(1, testAccount.getAccountId());
         assertEquals("John Smith", testAccount.getAccountName());
         assertEquals(200.00, testAccount.getAccountBalance());
     }
@@ -55,5 +56,10 @@ public class AccountTest {
         assertEquals(30.00, testAccount.getAccountBalance());
         testAccount.makeDebt(30.00);
         assertEquals(0.0, testAccount.getAccountBalance());
+    }
+
+    @Test
+    public void testToString() {
+        assertEquals("1:John Smith:200.0", testAccount.toString());
     }
 }

@@ -15,8 +15,8 @@ public class AccountsTest {
     @BeforeEach
     public void runBefore() {
         accounts = new AccountsList("Radhika's AccountsList");
-        account1 = new Account("John Smith", 200.00);
-        account2 = new Account("Emily Wood", 0.00);
+        account1 = new Account(1, "John Smith", 200.00);
+        account2 = new Account(2, "Emily Wood", 0.00);
     }
 
     @Test
@@ -73,8 +73,8 @@ public class AccountsTest {
         accounts.getAccounts().add(account1);
         accounts.getAccounts().add(account2);
         assertEquals(2, accounts.getAccountIds().size());
-        assertEquals(9, accounts.getAccountIds().get(0));
-        assertEquals(10, accounts.getAccountIds().get(1));
+        assertEquals(1, accounts.getAccountIds().get(0));
+        assertEquals(2, accounts.getAccountIds().get(1));
     }
 }
 
