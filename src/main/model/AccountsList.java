@@ -7,24 +7,23 @@ import persistence.Writable;
 import java.util.ArrayList;
 import java.util.List;
 
-// Represents a list of Accounts
+// Represents an accounts list having a collection of Accounts
 public class AccountsList implements Writable {
     private String name;
     private List<Account> accounts;
 
+    // EFFECTS: constructs an account with a name and empty list of accounts
     public AccountsList(String name) {
         this.name = name;
         accounts = new ArrayList<>();
     }
 
-    //REQUIRES: account != null
     //MODIFIES: this
     //EFFECTS: adds account to accounts
     public void addAccount(Account account) {
         accounts.add(account);
     }
 
-    //REQUIRES: account != null
     //MODIFIES: this
     //EFFECTS: removes account from accounts
     public void removeAccount(Account account) {
@@ -48,6 +47,7 @@ public class AccountsList implements Writable {
         return name;
     }
 
+    // EFFECTS: returns number of accounts in this accounts list
     public int numAccounts() {
         return accounts.size();
     }
@@ -60,7 +60,7 @@ public class AccountsList implements Writable {
         return json;
     }
 
-    // EFFECTS: returns accounts in this accounts list
+    // EFFECTS: returns accounts in this accounts list as a JSON array
     private JSONArray accountsToJson() {
         JSONArray jsonArray = new JSONArray();
 

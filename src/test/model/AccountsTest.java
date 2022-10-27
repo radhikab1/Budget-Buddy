@@ -22,6 +22,7 @@ public class AccountsTest {
     @Test
     public void testConstructor() {
         assertNotNull(accounts.getAccounts());
+        assertEquals("Radhika's AccountsList", accounts.getName());
         assertEquals(0, accounts.getAccounts().size());
     }
 

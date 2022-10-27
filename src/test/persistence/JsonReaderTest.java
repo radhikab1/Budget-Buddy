@@ -9,6 +9,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// Represents tests for JsonReader
 public class JsonReaderTest extends JsonTest {
 
     @Test

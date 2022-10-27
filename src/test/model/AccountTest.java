@@ -16,7 +16,6 @@ public class AccountTest {
 
     @Test
     public void testConstructor() {
-        assertTrue(testAccount.getAccountId() > 0);
         assertEquals(1, testAccount.getAccountId());
         assertEquals("John Smith", testAccount.getAccountName());
         assertEquals(200.00, testAccount.getAccountBalance());

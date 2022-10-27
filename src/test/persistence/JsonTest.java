@@ -4,6 +4,7 @@ import model.Account;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+// Represents tests for Json objects
 public class JsonTest {
     protected void checkAccount(Integer id, String name, Double balance, Account account) {
         assertEquals(id, account.getAccountId());
