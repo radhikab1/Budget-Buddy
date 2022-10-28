@@ -16,7 +16,7 @@ import java.io.FileNotFoundException;
 // Used for JsonReader and JsonWriter and their tests, Writable, Main,
 // and loadAccountsList() and saveAccountsList() in FinancialManagementApp
 //
-// Main class. Executes main method and instantiates FinancialManagementApp
+// Represents main class. Executes main method and instantiates FinancialManagementApp
 public class Main {
     public static void main(String[] args) {
         try {

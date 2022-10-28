@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-// Financial management application
+// Represents the financial management application
 public class FinancialManagementApp {
     private static final String JSON_STORE = "./data/accountslist.json";
     private Scanner input;
