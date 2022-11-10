@@ -110,7 +110,7 @@ public class FinancialManagementApp {
 
     // EFFECTS: prompts user to select an account by its Id and returns it
     private Account selectAccount() {
-        Integer selection = 0;
+        int selection = 0;
 
         while (!(accounts.getAccountIds().contains(selection))) {
             System.out.println("\nPlease enter an account ID to select an account: ");
