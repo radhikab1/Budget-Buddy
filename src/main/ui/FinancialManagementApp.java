@@ -17,6 +17,7 @@ public class FinancialManagementApp {
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
+
     // EFFECTS: constructs an empty accounts list then runs the financial management application
     public FinancialManagementApp() throws FileNotFoundException {
         accounts = new AccountsList("Radhika's AccountsList");
