@@ -5,12 +5,14 @@ import java.awt.*;
 
 import static java.awt.Image.SCALE_DEFAULT;
 
+// Represents splash screen with image, progress bar, and status message
 public class SplashScreen {
     JFrame frame;
     JLabel image;
     JProgressBar progressBar;
     JLabel statusMessage;
 
+    // EFFECTS: constructs Splash Screen with visible frame, image, progress bar, and status message
     public SplashScreen() {
         createFrame();
         addImage();
@@ -20,6 +22,8 @@ public class SplashScreen {
         runProgressBar();
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates frame and sets its title, layout, size, location and background colour
     public void createFrame() {
         frame = new JFrame();
         frame.setTitle("Loading...");
@@ -29,6 +33,8 @@ public class SplashScreen {
         frame.getContentPane().setBackground(Color.WHITE);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds image to frame and scales it and sets its bounds
     public void addImage() {
         image = new JLabel();
         image.setIcon(new ImageIcon(new ImageIcon("src/main/ui/gui/logo.png").getImage().getScaledInstance(400,
@@ -37,6 +43,8 @@ public class SplashScreen {
         frame.add(image);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds status message to frame and sets its bounds and font
     public void addStatusMessage() {
         statusMessage = new JLabel();
         statusMessage.setBounds(200, 425, 200, 40);
@@ -44,6 +52,9 @@ public class SplashScreen {
         frame.add(statusMessage);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds progress bar to frame and sets its bounds, border, font, progress string, background colour,
+    // foreground colour, and value
     public void addProgressBar() {
         progressBar = new JProgressBar();
         progressBar.setBounds(50, 400, 400, 25);
@@ -55,6 +66,8 @@ public class SplashScreen {
         frame.add(progressBar);
     }
 
+    // MODIFIES: this
+    // EFFECTS: runs progress bar by updating its value and status message to display the percentage loaded
     public void runProgressBar() {
         int i = 0;
 

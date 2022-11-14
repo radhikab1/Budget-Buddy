@@ -47,7 +47,7 @@ import java.io.IOException;
 // https://stackoverflow.com/questions/16343098/resize-a-picture-to-fit-a-jlabel
 // Used to determine how to resize image to fit JLabel
 //
-// Represents main class. Executes main method and instantiates FinancialManagementApp
+// Represents Financial Management app with its GUI
 public class FinancialManagementAppGUI extends JFrame {
     private static final int FRAME_WIDTH = 600;
     private static final int FRAME_HEIGHT = 600;
@@ -56,23 +56,25 @@ public class FinancialManagementAppGUI extends JFrame {
 
     private AccountsList accountsList;
 
+    // EFFECTS: Constructs Financial Management app with an accountsList and adds a menu panel with buttons
+    // that respond to events to a visible JFrame
     public FinancialManagementAppGUI() {
+        accountsList = new AccountsList("Radhika's AccountsList");
         frame = new JFrame("Financial Management App");
         setFrame();
+        frame.add(addMenuPanel());
+        frame.setVisible(true);
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets frame of Financial Management GUI
     public void setFrame() {
         frame.setLayout(new BorderLayout());
         frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-        frame.add(addMenuPanel());
-
-        frame.setVisible(true);
-
-        accountsList = new AccountsList("Radhika's AccountsList");
     }
 
+    // EFFECTS: returns visible menu panel with a label and buttons that respond to events
     public JPanel addMenuPanel() {
         JPanel menuPanel = new JPanel(new GridLayout(7, 1));
         JLabel label = new JLabel("MENU", SwingConstants.CENTER);
@@ -96,7 +98,10 @@ public class FinancialManagementAppGUI extends JFrame {
         return menuPanel;
     }
 
+    // Represents action to be taken when user wants to view list of accounts in the system
     private class ViewAccountsAction extends AbstractAction {
+
+        // EFFECTS: constructs view accounts action
         ViewAccountsAction() {
             super("View Accounts");
         }
@@ -118,9 +123,10 @@ public class FinancialManagementAppGUI extends JFrame {
         }
     }
 
-
+    // Represents action to be taken when user wants to make a transaction to the accountsList in the system
     private class MakeTransactionAction extends AbstractAction {
 
+        // EFFECTS: constructs make transaction action
         MakeTransactionAction() {
             super("Make Transaction");
         }
@@ -145,9 +151,9 @@ public class FinancialManagementAppGUI extends JFrame {
         }
 
         // REQUIRES: account != null
-        // MODIFIES: this
         // EFFECTS: prompts user to select whether they want to make a credit or debt to the given account,
-        //          and processes the transaction (credit or debt) as chosen by the user
+        //          and processes the transaction (credit or debt) as chosen by the user,
+        //          gives pop-up error message if credit or debt not chosen
         private void chooseCreditOrDebt(Account account) {
             String selection = (JOptionPane.showInputDialog(null,
                     "Select Transaction Type (c for credit/d for debt):", "Select Transaction Type",
@@ -166,8 +172,8 @@ public class FinancialManagementAppGUI extends JFrame {
         }
 
         // REQUIRES: account != null
-        // MODIFIES: this
-        // EFFECTS: prompts user to enter the amount to credit and makes credit to given account
+        // EFFECTS: prompts user to enter the amount to credit; if amount < 0.0 gives pop -up error message, otherwise
+        // makes credit to given account and gives pop-up confirmation message
         private void makeCredit(Account account) {
             double amount = Double.parseDouble(JOptionPane.showInputDialog(null,
                     "Enter credit amount:", "Enter Amount",
@@ -185,8 +191,8 @@ public class FinancialManagementAppGUI extends JFrame {
         }
 
         // REQUIRES: account != null
-        // MODIFIES: this
-        // EFFECTS: prompts user to enter the amount to debt and makes debt to given account
+        // EFFECTS: prompts user to enter the amount to debt; if debt < 0.0 or if debt > getAccountBalance()
+        // gives pop-up error message, otherwise makes debt to given account and gives pop-up confirmation message
         private void makeDebt(Account account) {
             double amount = Double.parseDouble(JOptionPane.showInputDialog(null,
                     "Enter debt amount:", "Enter Amount",
@@ -204,8 +210,10 @@ public class FinancialManagementAppGUI extends JFrame {
         }
     }
 
+    // Represents action to be taken when user wants to add an account to accountsList in the system
     private class AddAccountAction extends AbstractAction {
 
+        // EFFECTS: constructs add account action
         AddAccountAction() {
             super("Add Account");
         }
@@ -238,8 +246,10 @@ public class FinancialManagementAppGUI extends JFrame {
         }
     }
 
+    // Represents action to be taken when user wants to remove account from accountsList in the system
     private class RemoveAccountAction extends AbstractAction {
 
+        // EFFECTS: constructs remove account action
         RemoveAccountAction() {
             super("Remove Account");
         }
@@ -267,11 +277,13 @@ public class FinancialManagementAppGUI extends JFrame {
         }
     }
 
+    // Represents action to be taken when user wants to save data to file in the system
     private class SaveDataAction extends AbstractAction {
         private static final String JSON_STORE = "./data/accountslist.json";
         private JsonWriter jsonWriter;
         private JsonReader jsonReader;
 
+        // EFFECTS: constructs save data action with JsonWriter and JsonReader
         SaveDataAction() {
             super("Save Data");
             jsonWriter = new JsonWriter(JSON_STORE);
@@ -291,11 +303,13 @@ public class FinancialManagementAppGUI extends JFrame {
         }
     }
 
+    // Represents action to be taken when user wants to load data from file in the system
     private class LoadDataAction extends AbstractAction {
         private static final String JSON_STORE = "./data/accountslist.json";
         private JsonWriter jsonWriter;
         private JsonReader jsonReader;
 
+        // EFFECTS: constructs load data action with JsonWriter and JsonReader
         LoadDataAction() {
             super("Load Data");
             jsonWriter = new JsonWriter(JSON_STORE);
@@ -313,6 +327,7 @@ public class FinancialManagementAppGUI extends JFrame {
         }
     }
 
+    // EFFECTS: runs main method with splash screen and financial management app GUI
     public static void main(String[] args) {
         new SplashScreen();
         new FinancialManagementAppGUI();
