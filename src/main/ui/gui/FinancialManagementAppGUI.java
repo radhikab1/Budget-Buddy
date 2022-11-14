@@ -29,8 +29,6 @@ import java.io.IOException;
 public class FinancialManagementAppGUI extends JFrame {
     private static final int FRAME_WIDTH = 600;
     private static final int FRAME_HEIGHT = 600;
-//    private static final int BUTTON_WIDTH = 100;
-//    private static final int BUTTON_HEIGHT = 100;
 
     private JFrame frame;
 
@@ -39,8 +37,6 @@ public class FinancialManagementAppGUI extends JFrame {
     public FinancialManagementAppGUI() {
         frame = new JFrame("Financial Management App");
         setFrame();
-
-//        addDisplayPanel();
     }
 
     public void setFrame() {
@@ -56,13 +52,10 @@ public class FinancialManagementAppGUI extends JFrame {
     }
 
     public JPanel addMenuPanel() {
-        JPanel menuPanel = new JPanel(new GridLayout(6, 1));
-//      menuPanel.setBounds(0, 0, FRAME_WIDTH, FRAME_HEIGHT);
-        JLabel label = new JLabel("Menu");
-        //menuPanel.add(label);
-        //menuPanel.setLayout(new GridLayout(4, 1));
+        JPanel menuPanel = new JPanel(new GridLayout(7, 1));
+        JLabel label = new JLabel("MENU", SwingConstants.CENTER);
+        menuPanel.add(label);
         menuPanel.setVisible(true);
-        //menuPanel.setLayout(null);
 
         JButton viewAccountsButton = new JButton(new ViewAccountsAction());
         JButton makeTransactionButton = new JButton(new MakeTransactionAction());
@@ -80,23 +73,6 @@ public class FinancialManagementAppGUI extends JFrame {
 
         return menuPanel;
     }
-
-//    public void addButtons() {
-//        JButton addAccountButton = new JButton(new AddAccountAction());
-//        JButton removeAccountButton = new JButton(new RemoveAccountAction());
-//        JButton saveDataButton = new JButton(new SaveDataAction());
-//        JButton loadDataButton = new JButton(new LoadDataAction());
-//
-////        addAccountButton.setBounds(50, 25, BUTTON_WIDTH, BUTTON_HEIGHT);
-////        removeAccountButton.setBounds(50, 150, BUTTON_WIDTH, BUTTON_HEIGHT);
-////        saveDataButton.setBounds(50, 375, BUTTON_WIDTH, BUTTON_HEIGHT);
-////        loadDataButton.setBounds(50, 400, BUTTON_WIDTH, BUTTON_HEIGHT);
-//
-//        menuPanel.add(addAccountButton);
-//        menuPanel.add(removeAccountButton);
-//        menuPanel.add(saveDataButton);
-//        menuPanel.add(loadDataButton);
-//    }
 
     private class ViewAccountsAction extends AbstractAction {
         ViewAccountsAction() {
@@ -314,24 +290,6 @@ public class FinancialManagementAppGUI extends JFrame {
             }
         }
     }
-
-//    public JPanel addDisplayPanel() {
-//        JPanel displayPanel = new JPanel();
-//        displayPanel.setBounds(301, 0, PANEL_WIDTH, PANEL_HEIGHT);
-//        JLabel label = new JLabel("Accounts Log");
-//        displayPanel.add(label);
-//        displayPanel.setVisible(true);
-//
-//        //displayPanel.add(printAccountsList());
-//
-//        return displayPanel;
-//    }
-
-//    public JTextArea printAccountsList() {
-//        JTextArea displayAccounts = new JTextArea(accountsList.getAccounts().size(),3);
-//
-//        return displayAccounts;
-//    }
 
     public static void main(String[] args) {
         new SplashScreen();
