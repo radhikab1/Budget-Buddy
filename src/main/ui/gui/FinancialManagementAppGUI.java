@@ -116,6 +116,9 @@ public class FinancialManagementAppGUI extends JFrame {
             super("Add Account");
         }
 
+        // EFFECTS: prompts user to enter accountId, accountName, and accountBalance of account to add to accountsList
+        // via pop-up box. If accountId already exists in accountsList, gives pop-up box error message, otherwise adds
+        // account to accountsList and gives pop-up box confirmation message.
         @Override
         public void actionPerformed(ActionEvent evt) {
             int accountId = Integer.parseInt((JOptionPane.showInputDialog(null,
@@ -153,6 +156,9 @@ public class FinancialManagementAppGUI extends JFrame {
             super("Remove Account");
         }
 
+        // EFFECTS: prompts user to enter accountId of account to remove from accountsList via pop-up box.
+        // If accountId does not exist in accountsList, gives pop-up box error message, otherwise removes
+        // account from accountsList and gives pop-up box confirmation message.
         @Override
         public void actionPerformed(ActionEvent evt) {
             int accountId = Integer.parseInt((JOptionPane.showInputDialog(null,
@@ -177,32 +183,6 @@ public class FinancialManagementAppGUI extends JFrame {
         }
     }
 
-    // Represents action to be taken when user wants to save data to file in the system
-    private class SaveDataAction extends AbstractAction {
-        private static final String JSON_STORE = "./data/accountslist.json";
-        private JsonWriter jsonWriter;
-        private JsonReader jsonReader;
-
-        // EFFECTS: constructs save data action with JsonWriter and JsonReader
-        SaveDataAction() {
-            super("Save Data");
-            jsonWriter = new JsonWriter(JSON_STORE);
-            jsonReader = new JsonReader(JSON_STORE);
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent evt) {
-            try {
-                jsonWriter.open();
-                jsonWriter.write(accountsList);
-                jsonWriter.close();
-                System.out.println("Saved " + accountsList.getName() + " to " + JSON_STORE);
-            } catch (FileNotFoundException e) {
-                System.out.println("Unable to write to file: " + JSON_STORE);
-            }
-        }
-    }
-
     // Represents action to be taken when user wants to make a transaction to the accountsList in the system
     private class MakeTransactionAction extends AbstractAction {
 
@@ -211,6 +191,9 @@ public class FinancialManagementAppGUI extends JFrame {
             super("Make Transaction");
         }
 
+        // EFFECTS: prompts user to enter accountId of account to make transaction to via pop-up box.
+        // If accountId exists, prompts user to choose to make credit or debt via pop-up box then updates displayLabel,
+        // otherwise gives pop-up box error message that accountId does not exist.
         @Override
         public void actionPerformed(ActionEvent evt) {
             Account selectedAccount = null;
@@ -291,6 +274,33 @@ public class FinancialManagementAppGUI extends JFrame {
         }
     }
 
+    // Represents action to be taken when user wants to save data to file in the system
+    private class SaveDataAction extends AbstractAction {
+        private static final String JSON_STORE = "./data/accountslist.json";
+        private JsonWriter jsonWriter;
+        private JsonReader jsonReader;
+
+        // EFFECTS: constructs save data action with JsonWriter and JsonReader
+        SaveDataAction() {
+            super("Save Data");
+            jsonWriter = new JsonWriter(JSON_STORE);
+            jsonReader = new JsonReader(JSON_STORE);
+        }
+
+        // EFFECTS: saves the accounts list to file
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            try {
+                jsonWriter.open();
+                jsonWriter.write(accountsList);
+                jsonWriter.close();
+                System.out.println("Saved " + accountsList.getName() + " to " + JSON_STORE);
+            } catch (FileNotFoundException e) {
+                System.out.println("Unable to write to file: " + JSON_STORE);
+            }
+        }
+    }
+
     // Represents action to be taken when user wants to load data from file in the system
     private class LoadDataAction extends AbstractAction {
         private static final String JSON_STORE = "./data/accountslist.json";
@@ -304,6 +314,7 @@ public class FinancialManagementAppGUI extends JFrame {
             jsonReader = new JsonReader(JSON_STORE);
         }
 
+        // EFFECTS: loads the accounts list from file
         @Override
         public void actionPerformed(ActionEvent evt) {
             try {
