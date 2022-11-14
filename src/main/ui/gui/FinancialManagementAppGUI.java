@@ -88,139 +88,24 @@ public class FinancialManagementAppGUI extends JFrame {
 
     // EFFECTS: returns visible menu panel with a label and buttons that respond to events
     public JPanel createMenuPanel() {
-        JPanel menuPanel = new JPanel(new GridLayout(7, 1));
+        JPanel menuPanel = new JPanel(new GridLayout(6, 1));
         JLabel label = new JLabel("MENU", SwingConstants.CENTER);
         menuPanel.add(label);
         menuPanel.setVisible(true);
 
-        JButton viewAccountsButton = new JButton(new ViewAccountsAction());
-        JButton makeTransactionButton = new JButton(new MakeTransactionAction());
         JButton addAccountButton = new JButton(new AddAccountAction());
         JButton removeAccountButton = new JButton(new RemoveAccountAction());
+        JButton makeTransactionButton = new JButton(new MakeTransactionAction());
         JButton saveDataButton = new JButton(new SaveDataAction());
         JButton loadDataButton = new JButton(new LoadDataAction());
 
-        menuPanel.add(viewAccountsButton);
-        menuPanel.add(makeTransactionButton);
         menuPanel.add(addAccountButton);
         menuPanel.add(removeAccountButton);
+        menuPanel.add(makeTransactionButton);
         menuPanel.add(saveDataButton);
         menuPanel.add(loadDataButton);
 
         return menuPanel;
-    }
-
-    // Represents action to be taken when user wants to view list of accounts in the system
-    private class ViewAccountsAction extends AbstractAction {
-
-        // EFFECTS: constructs view accounts action
-        ViewAccountsAction() {
-            super("View Accounts");
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent evt) {
-            if (accountsList.getAccounts().size() == 0) {
-                JOptionPane.showMessageDialog(null,
-                        "There are no existing accounts.", "System Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                String message = "The following are existing accounts: ";
-                for (Account account : accountsList.getAccounts()) {
-                    message = message + "\nAccount ID: " + account.getAccountId() + ", Account Name: "
-                            + account.getAccountName() + ", Account Balance: " + account.getAccountBalance();
-                }
-                JOptionPane.showMessageDialog(null, message, "View Accounts",
-                        JOptionPane.INFORMATION_MESSAGE);
-            }
-        }
-    }
-
-    // Represents action to be taken when user wants to make a transaction to the accountsList in the system
-    private class MakeTransactionAction extends AbstractAction {
-
-        // EFFECTS: constructs make transaction action
-        MakeTransactionAction() {
-            super("Make Transaction");
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent evt) {
-            Account selectedAccount = null;
-            int accountId = Integer.parseInt((JOptionPane.showInputDialog(null,
-                    "Enter Account Id:", "Enter Account Id", JOptionPane.QUESTION_MESSAGE)));
-            if ((accountsList.getAccounts().size() > 0) && (accountsList.getAccountIds().contains(accountId))) {
-                for (Account account : accountsList.getAccounts()) {
-                    if (accountId == account.getAccountId()) {
-                        selectedAccount = account;
-                    }
-                }
-                chooseCreditOrDebt(selectedAccount);
-                setDisplayLabel();
-            } else {
-                JOptionPane.showMessageDialog(null,
-                        "Invalid account id entered. Account id doesn't exist!", "System Error",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        }
-
-        // REQUIRES: account != null
-        // EFFECTS: prompts user to select whether they want to make a credit or debt to the given account,
-        //          and processes the transaction (credit or debt) as chosen by the user,
-        //          gives pop-up error message if credit or debt not chosen
-        private void chooseCreditOrDebt(Account account) {
-            String selection = (JOptionPane.showInputDialog(null,
-                    "Select Transaction Type (c for credit/d for debt):", "Select Transaction Type",
-                    JOptionPane.QUESTION_MESSAGE));
-            if (selection.equals("c") || selection.equals("d")) {
-                if (selection.equals("c")) {
-                    makeCredit(account);
-                } else {
-                    makeDebt(account);
-                }
-            } else {
-                JOptionPane.showMessageDialog(null,
-                        "Invalid selection!", "System Error",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        }
-
-        // REQUIRES: account != null
-        // EFFECTS: prompts user to enter the amount to credit; if amount < 0.0 gives pop -up error message, otherwise
-        // makes credit to given account and gives pop-up confirmation message
-        private void makeCredit(Account account) {
-            double amount = Double.parseDouble(JOptionPane.showInputDialog(null,
-                    "Enter credit amount:", "Enter Amount",
-                    JOptionPane.QUESTION_MESSAGE));
-            if (amount >= 0.0) {
-                account.makeCredit(amount);
-                JOptionPane.showMessageDialog(null,
-                        "Transaction Processed!",
-                        "Confirmation Message", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null,
-                        "Invalid amount credit cannot be negative!", "System Error",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        }
-
-        // REQUIRES: account != null
-        // EFFECTS: prompts user to enter the amount to debt; if debt < 0.0 or if debt > getAccountBalance()
-        // gives pop-up error message, otherwise makes debt to given account and gives pop-up confirmation message
-        private void makeDebt(Account account) {
-            double amount = Double.parseDouble(JOptionPane.showInputDialog(null,
-                    "Enter debt amount:", "Enter Amount",
-                    JOptionPane.QUESTION_MESSAGE));
-            if (amount >= 0.0 && amount <= account.getAccountBalance()) {
-                account.makeDebt(amount);
-                JOptionPane.showMessageDialog(null,
-                        "Transaction Processed!",
-                        "Confirmation Message", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null,
-                        "Invalid amount, debt amount cannot be negative and can't be more than balance!",
-                        "System Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
     }
 
     // Represents action to be taken when user wants to add an account to accountsList in the system
@@ -314,6 +199,94 @@ public class FinancialManagementAppGUI extends JFrame {
                 System.out.println("Saved " + accountsList.getName() + " to " + JSON_STORE);
             } catch (FileNotFoundException e) {
                 System.out.println("Unable to write to file: " + JSON_STORE);
+            }
+        }
+    }
+
+    // Represents action to be taken when user wants to make a transaction to the accountsList in the system
+    private class MakeTransactionAction extends AbstractAction {
+
+        // EFFECTS: constructs make transaction action
+        MakeTransactionAction() {
+            super("Make Transaction");
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            Account selectedAccount = null;
+            int accountId = Integer.parseInt((JOptionPane.showInputDialog(null,
+                    "Enter Account Id:", "Enter Account Id", JOptionPane.QUESTION_MESSAGE)));
+            if ((accountsList.getAccounts().size() > 0) && (accountsList.getAccountIds().contains(accountId))) {
+                for (Account account : accountsList.getAccounts()) {
+                    if (accountId == account.getAccountId()) {
+                        selectedAccount = account;
+                    }
+                }
+                chooseCreditOrDebt(selectedAccount);
+                setDisplayLabel();
+            } else {
+                JOptionPane.showMessageDialog(null,
+                        "Invalid account id entered. Account id doesn't exist!", "System Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+        // REQUIRES: account != null
+        // EFFECTS: prompts user to select whether they want to make a credit or debt to the given account,
+        //          and processes the transaction (credit or debt) as chosen by the user,
+        //          gives pop-up error message if credit or debt not chosen
+        private void chooseCreditOrDebt(Account account) {
+            String selection = (JOptionPane.showInputDialog(null,
+                    "Select Transaction Type (c for credit/d for debt):", "Select Transaction Type",
+                    JOptionPane.QUESTION_MESSAGE));
+            if (selection.equals("c") || selection.equals("d")) {
+                if (selection.equals("c")) {
+                    makeCredit(account);
+                } else {
+                    makeDebt(account);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null,
+                        "Invalid selection!", "System Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+        // REQUIRES: account != null
+        // EFFECTS: prompts user to enter the amount to credit; if amount < 0.0 gives pop -up error message, otherwise
+        // makes credit to given account and gives pop-up confirmation message
+        private void makeCredit(Account account) {
+            double amount = Double.parseDouble(JOptionPane.showInputDialog(null,
+                    "Enter credit amount:", "Enter Amount",
+                    JOptionPane.QUESTION_MESSAGE));
+            if (amount >= 0.0) {
+                account.makeCredit(amount);
+                JOptionPane.showMessageDialog(null,
+                        "Transaction Processed!",
+                        "Confirmation Message", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null,
+                        "Invalid amount credit cannot be negative!", "System Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+        // REQUIRES: account != null
+        // EFFECTS: prompts user to enter the amount to debt; if debt < 0.0 or if debt > getAccountBalance()
+        // gives pop-up error message, otherwise makes debt to given account and gives pop-up confirmation message
+        private void makeDebt(Account account) {
+            double amount = Double.parseDouble(JOptionPane.showInputDialog(null,
+                    "Enter debt amount:", "Enter Amount",
+                    JOptionPane.QUESTION_MESSAGE));
+            if (amount >= 0.0 && amount <= account.getAccountBalance()) {
+                account.makeDebt(amount);
+                JOptionPane.showMessageDialog(null,
+                        "Transaction Processed!",
+                        "Confirmation Message", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null,
+                        "Invalid amount, debt amount cannot be negative and can't be more than balance!",
+                        "System Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
