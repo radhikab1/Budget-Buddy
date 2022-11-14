@@ -53,16 +53,19 @@ public class FinancialManagementAppGUI extends JFrame {
     private static final int FRAME_HEIGHT = 600;
 
     private JFrame frame;
+    private JLabel displayLabel;
 
     private AccountsList accountsList;
 
-    // EFFECTS: Constructs Financial Management app with an accountsList and adds a menu panel with buttons
-    // that respond to events to a visible JFrame
+    // EFFECTS: Constructs Financial Management app with an accountsList and adds to a visible JFrame a panel
+    // containing menuPanel with buttons that respond to events and a displayPanel that displays the accounts already
+    // added to accountsList
     public FinancialManagementAppGUI() {
         accountsList = new AccountsList("Radhika's AccountsList");
         frame = new JFrame("Financial Management App");
         setFrame();
-        frame.add(addMenuPanel());
+        displayLabel = new JLabel();
+        frame.add(createPanel());
         frame.setVisible(true);
     }
 
@@ -74,8 +77,17 @@ public class FinancialManagementAppGUI extends JFrame {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
+    // EFFECTS: creates a panel containing menuPanel with buttons that respond to events and a displayPanel that
+    // displays the accounts already added to accountsList
+    public JPanel createPanel() {
+        JPanel panel = new JPanel(new GridLayout(2, 1));
+        panel.add(createMenuPanel());
+        panel.add(createDisplayPanel());
+        return panel;
+    }
+
     // EFFECTS: returns visible menu panel with a label and buttons that respond to events
-    public JPanel addMenuPanel() {
+    public JPanel createMenuPanel() {
         JPanel menuPanel = new JPanel(new GridLayout(7, 1));
         JLabel label = new JLabel("MENU", SwingConstants.CENTER);
         menuPanel.add(label);
@@ -143,6 +155,7 @@ public class FinancialManagementAppGUI extends JFrame {
                     }
                 }
                 chooseCreditOrDebt(selectedAccount);
+                setDisplayLabel();
             } else {
                 JOptionPane.showMessageDialog(null,
                         "Invalid account id entered. Account id doesn't exist!", "System Error",
@@ -243,6 +256,7 @@ public class FinancialManagementAppGUI extends JFrame {
                         "Account Added!", "Confirmation Message",
                         JOptionPane.INFORMATION_MESSAGE);
             }
+            setDisplayLabel();
         }
     }
 
@@ -274,6 +288,7 @@ public class FinancialManagementAppGUI extends JFrame {
                         "Invalid account id entered. Account id doesn't exist!", "System Error",
                         JOptionPane.ERROR_MESSAGE);
             }
+            setDisplayLabel();
         }
     }
 
@@ -324,7 +339,40 @@ public class FinancialManagementAppGUI extends JFrame {
             } catch (IOException e) {
                 System.out.println("Unable to read from file: " + JSON_STORE);
             }
+            setDisplayLabel();
         }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: creates display panel to display id, name, and balance of accounts already added to accountsList,
+    // otherwise if no accounts are added to accountsList, notifies that there are no existing accounts
+    public JPanel createDisplayPanel() {
+        JPanel displayPanel = new JPanel(new GridLayout(1, 1));
+
+        setDisplayLabel();
+        displayPanel.add(displayLabel);
+        displayPanel.setVisible(true);
+
+        return displayPanel;
+    }
+
+    // EFFECTS: creates label for displayPanel with id, name, and balance of accounts already added to accountsList,
+    // otherwise if no accounts are added to accountsList, notifies that there are no existing accounts.
+    public void setDisplayLabel() {
+        String displayPanelText;
+
+        if (accountsList.getAccounts().size() == 0) {
+            displayPanelText = "\nThere are no existing accounts.";
+        } else {
+            displayPanelText = "<html> The following are existing accounts:";
+            for (Account account: accountsList.getAccounts()) {
+                displayPanelText += "<br>Account ID: " + account.getAccountId() + ", Account Name: "
+                        + account.getAccountName() + ", Account Balance: " + account.getAccountBalance();
+            }
+            displayPanelText += "</html>";
+        }
+
+        displayLabel.setText(displayPanelText);
     }
 
     // EFFECTS: runs main method with splash screen and financial management app GUI
