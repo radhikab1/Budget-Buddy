@@ -47,6 +47,9 @@ import java.io.IOException;
 // https://stackoverflow.com/questions/16343098/resize-a-picture-to-fit-a-jlabel
 // Used to determine how to resize image to fit JLabel
 //
+// https://stackoverflow.com/questions/17456401/how-to-update-a-jlabel-text
+// Used to determine how to update JLabel
+//
 // Represents Financial Management app with its GUI
 public class FinancialManagementAppGUI extends JFrame {
     private static final int FRAME_WIDTH = 600;
