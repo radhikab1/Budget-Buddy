@@ -31,6 +31,9 @@ import java.io.IOException;
 // https://www.javatpoint.com/java-jpanel, https://www.codejava.net/java-se/swing/jpanel-basic-tutorial-and-examples
 // Used to determine functionality of JPanel
 //
+// https://stackoverflow.com/questions/41172472/how-to-make-jpanel-scrollable
+// Used to determine how to create a scrollPane
+//
 // https://github.students.cs.ubc.ca/CPSC210/AlarmSystem
 // Used to determine how to perform event handling and add buttons, and how to display pop-up boxes
 // (question messages, information messages, error messages)
@@ -61,8 +64,8 @@ public class FinancialManagementAppGUI extends JFrame {
     private AccountsList accountsList;
 
     // EFFECTS: Constructs Financial Management app with an accountsList and adds to a visible JFrame a panel
-    // containing menuPanel with buttons that respond to events and a displayPanel that displays the accounts already
-    // added to accountsList
+    // containing menuPanel with buttons that respond to events and a scroll pane with displayPanel that displays
+    // the accounts already added to accountsList
     public FinancialManagementAppGUI() {
         accountsList = new AccountsList("Radhika's AccountsList");
         frame = new JFrame("Financial Management App");
@@ -80,12 +83,13 @@ public class FinancialManagementAppGUI extends JFrame {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
-    // EFFECTS: creates a panel containing menuPanel with buttons that respond to events and a displayPanel that
-    // displays the accounts already added to accountsList
+    // EFFECTS: creates a panel containing menuPanel with buttons that respond to events and a scroll pane with
+    // displayPanel that displays the accounts already added to accountsList
     public JPanel createPanel() {
         JPanel panel = new JPanel(new GridLayout(2, 1));
         panel.add(createMenuPanel());
-        panel.add(createDisplayPanel());
+        JScrollPane scroller = new JScrollPane(createDisplayPanel());
+        panel.add(scroller);
         return panel;
     }
 
