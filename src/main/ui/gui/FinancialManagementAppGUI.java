@@ -15,48 +15,6 @@ import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-// Sources Used:
-//
-// https://github.students.cs.ubc.ca/CPSC210/TellerApp
-// Used to determine fields of the accounts class, and
-// some functionality of the UI (such as how to run the program and process user input/commands,
-// how to use the scanner, how to select a specific account, and how to display a menu)
-//
-// https://github.students.cs.ubc.ca/CPSC210/LongFormProblemStarters
-// Used to determine how to lookup an account by a field (such as the account Id)
-//
-// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
-// Used for JsonReader and JsonWriter and their tests, Writable, Main,
-// and loadAccountsList() and saveAccountsList() in FinancialManagementApp
-//
-// https://www.javatpoint.com/java-jframe
-// Used to determine functionality of JFrame
-//
-// https://www.javatpoint.com/java-jpanel, https://www.codejava.net/java-se/swing/jpanel-basic-tutorial-and-examples
-// Used to determine functionality of JPanel
-//
-// https://stackoverflow.com/questions/41172472/how-to-make-jpanel-scrollable
-// Used to determine how to create a scrollPane
-//
-// https://github.students.cs.ubc.ca/CPSC210/AlarmSystem
-// Used to determine how to perform event handling and add buttons, and how to display pop-up boxes
-// (question messages, information messages, error messages)
-//
-// https://stackoverflow.com/questions/19506769/how-to-center-jlabel-in-jframe-swing
-// Used to determine how to center JLabel
-//
-// https://www.tutorialsfield.com/java-splash-screen-with-progress-bar/
-// Used for creating SplashScreen with image, progressbar, and loading message
-//
-// https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngkey.com%2Fdetail%2Fu2e6r5q8e6y3o0y3_free-shipping-on-a-per-product-basis-in%2F&psig=AOvVaw3J5rtwrDi_HiQSnUnAx9bM&ust=1668276375258000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCLCS3aLurPsCFQAAAAAdAAAAABAD
-// Splash screen image
-//
-// https://stackoverflow.com/questions/16343098/resize-a-picture-to-fit-a-jlabel
-// Used to determine how to resize image to fit JLabel
-//
-// https://stackoverflow.com/questions/17456401/how-to-update-a-jlabel-text
-// Used to determine how to update JLabel
-//
 // Represents Financial Management app with its GUI
 public class FinancialManagementAppGUI extends JFrame {
     private static final int FRAME_WIDTH = 600;
