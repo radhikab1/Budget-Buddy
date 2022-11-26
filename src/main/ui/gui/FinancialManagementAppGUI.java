@@ -2,12 +2,16 @@ package ui.gui;
 
 import model.Account;
 import model.AccountsList;
+import model.Event;
+import model.EventLog;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -76,11 +80,20 @@ public class FinancialManagementAppGUI extends JFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS: sets frame of Financial Management GUI
+    // EFFECTS: sets frame of Financial Management GUI. Prints log of events when window is closed.
     public void setFrame() {
         frame.setLayout(new BorderLayout());
         frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                for (Event next: EventLog.getInstance()) {
+                    System.out.println(next.toString() + "\n");
+                }
+                System.exit(0);
+            }
+        });
     }
 
     // EFFECTS: creates a panel containing menuPanel with buttons that respond to events and a scroll pane with

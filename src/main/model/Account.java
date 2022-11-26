@@ -24,6 +24,7 @@ public class Account implements Writable {
     // EFFECTS: adds creditAmount to accountBalance, then returns accountBalance
     public double makeCredit(double creditAmount) {
         accountBalance = accountBalance + creditAmount;
+
         return accountBalance;
     }
 

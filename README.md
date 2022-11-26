@@ -39,3 +39,16 @@ in the menu panel.
 the program
 - You can save the state of my application by clicking the button labelled "Save Data" in the menu panel
 - You can reload the state of my application by clicking the button labelled "Load Data" in the menu panel
+
+# Phase 4: Task 2
+Sat Nov 26 10:15:40 PST 2022
+<br>Removed Account: Account Id: 1, Account Name: Radhika Bajaj,Account Balance: 1000.0
+
+Sat Nov 26 10:15:53 PST 2022
+<br>Removed Account: Account Id: 2, Account Name: John Smith,Account Balance: 100.0
+
+Sat Nov 26 10:16:05 PST 2022
+<br>Removed Account: Account Id: 3, Account Name: Emily Wood,Account Balance: 3.0
+
+Sat Nov 26 10:16:10 PST 2022
+<br>Removed Account: Account Id: 2, Account Name: John Smith,Account Balance: 100.0

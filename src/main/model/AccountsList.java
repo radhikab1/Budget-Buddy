@@ -19,14 +19,18 @@ public class AccountsList implements Writable {
     }
 
     //MODIFIES: this
-    //EFFECTS: adds account to accounts
+    //EFFECTS: adds account to accounts. Logs an event indicating that account has been added.
     public void addAccount(Account account) {
+        EventLog.getInstance().logEvent(new Event("Removed Account: Account Id: " + account.getAccountId()
+                + ", Account Name: " + account.getAccountName() + ",Account Balance: " + account.getAccountBalance()));
         accounts.add(account);
     }
 
     //MODIFIES: this
-    //EFFECTS: removes account from accounts
+    //EFFECTS: removes account from accounts.  Logs an event indicating that account has been removed.
     public void removeAccount(Account account) {
+        EventLog.getInstance().logEvent(new Event("Removed Account: Account Id: " + account.getAccountId()
+                + ", Account Name: " + account.getAccountName() + ",Account Balance: " + account.getAccountBalance()));
         accounts.remove(account);
     }
 
