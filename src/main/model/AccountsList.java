@@ -21,7 +21,7 @@ public class AccountsList implements Writable {
     //MODIFIES: this
     //EFFECTS: adds account to accounts. Logs an event indicating that account has been added.
     public void addAccount(Account account) {
-        EventLog.getInstance().logEvent(new Event("Removed Account: Account Id: " + account.getAccountId()
+        EventLog.getInstance().logEvent(new Event("Added Account: Account Id: " + account.getAccountId()
                 + ", Account Name: " + account.getAccountName() + ",Account Balance: " + account.getAccountBalance()));
         accounts.add(account);
     }
