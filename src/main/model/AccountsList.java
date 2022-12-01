@@ -22,7 +22,7 @@ public class AccountsList implements Writable {
     //EFFECTS: adds account to accounts. Logs an event indicating that account has been added.
     public void addAccount(Account account) {
         EventLog.getInstance().logEvent(new Event("Added Account: Account Id: " + account.getAccountId()
-                + ", Account Name: " + account.getAccountName() + ",Account Balance: " + account.getAccountBalance()));
+                + ", Account Name: " + account.getAccountName() + ", Account Balance: " + account.getAccountBalance()));
         accounts.add(account);
     }
 
@@ -30,7 +30,7 @@ public class AccountsList implements Writable {
     //EFFECTS: removes account from accounts.  Logs an event indicating that account has been removed.
     public void removeAccount(Account account) {
         EventLog.getInstance().logEvent(new Event("Removed Account: Account Id: " + account.getAccountId()
-                + ", Account Name: " + account.getAccountName() + ",Account Balance: " + account.getAccountBalance()));
+                + ", Account Name: " + account.getAccountName() + ", Account Balance: " + account.getAccountBalance()));
         accounts.remove(account);
     }
 

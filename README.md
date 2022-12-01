@@ -42,17 +42,34 @@ the program
 
 # Phase 4: Task 2
 Sat Nov 26 12:07:56 PST 2022
-<br>Added Account: Account Id: 1, Account Name: Radhika Bajaj,Account Balance: 1000.0
+<br>Added Account: Account Id: 1, Account Name: Radhika Bajaj, Account Balance: 1000.0
 
 Sat Nov 26 12:08:05 PST 2022
-<br>Added Account: Account Id: 2, Account Name: John Smith,Account Balance: 100.0
+<br>Added Account: Account Id: 2, Account Name: John Smith, Account Balance: 100.0
 
 Sat Nov 26 12:08:22 PST 2022
-<br>Added Account: Account Id: 3, Account Name: Emily Wood,Account Balance: 3.0
+<br>Added Account: Account Id: 3, Account Name: Emily Wood, Account Balance: 3.0
 
 Sat Nov 26 12:08:27 PST 2022
-<br>Removed Account: Account Id: 2, Account Name: John Smith,Account Balance: 100.0
+<br>Removed Account: Account Id: 2, Account Name: John Smith, Account Balance: 100.0
 
+# Phase 4: Task 3
+- To increase cohesion in my project and to make responsibilities of classes more specific, I would refactor the private 
+class MakeTransactionAction by splitting it up into two different classes with one that performs a credit and another 
+that performs a debt. This would make the functionalities of classes more specific and make the code easier to 
+understand.
+- To reduce duplication in the code, I would extract common behaviour related to some of the dialog boxes (e.g. the 
+"Transaction Processed" confirmation message in the makeCredit() and makeDebt() methods in the 
+FinancialManagementAppGUI) into a common method.
+- To make the createMenuPanel() method in the FinancialManagementApp easier to understand, I would extract the code that
+creates new buttons and deals with the event handling into a new method.
+- Another way I would refactor the code is by including exception handling of certain cases such as when the user enters
+an incorrect type for a certain value, when the user inputs a negative dollar amount as the initial balance, if the user
+enters a negative amount to make a transaction with, or if the user enters an amount greater than the balance to make a 
+debt. This would reduce duplications in certain methods by extracting behaviour of what to do when an exceptional case 
+is encountered and would improve functionality of the code by preventing it from crashing in exceptional cases.
+- An additional refactoring I would perform is renaming the AccountsList class to something more relevant and 
+descriptive rather than simply having a name that states it is a list of accounts.
 
 # Sources Used:
 
