@@ -256,13 +256,11 @@ public class FinancialManagementAppGUI extends JFrame {
     private class SaveDataAction extends AbstractAction {
         private static final String JSON_STORE = "./data/accountslist.json";
         private JsonWriter jsonWriter;
-        private JsonReader jsonReader;
 
         // EFFECTS: constructs save data action with JsonWriter and JsonReader
         SaveDataAction() {
             super("Save Data");
             jsonWriter = new JsonWriter(JSON_STORE);
-            jsonReader = new JsonReader(JSON_STORE);
         }
 
         // EFFECTS: saves the accounts list to file
@@ -282,13 +280,11 @@ public class FinancialManagementAppGUI extends JFrame {
     // Represents action to be taken when user wants to load data from file in the system
     private class LoadDataAction extends AbstractAction {
         private static final String JSON_STORE = "./data/accountslist.json";
-        private JsonWriter jsonWriter;
         private JsonReader jsonReader;
 
         // EFFECTS: constructs load data action with JsonWriter and JsonReader
         LoadDataAction() {
             super("Load Data");
-            jsonWriter = new JsonWriter(JSON_STORE);
             jsonReader = new JsonReader(JSON_STORE);
         }
 
