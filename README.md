@@ -56,7 +56,7 @@ Sat Nov 26 12:08:27 PST 2022
 # Phase 4: Task 3
 - To increase cohesion in my project and to make responsibilities of classes more specific, I would refactor the private 
 class MakeTransactionAction by splitting it up into two different classes with one that performs a credit and another 
-that performs a debt. This would make the functionalities of classes more specific and make the code easier to 
+that performs a debt. In addition to making the functionalities of classes more specific, this would make the code easier to 
 understand.
 - To reduce duplication in the code, I would extract common behaviour related to some of the dialog boxes (e.g. the 
 "Transaction Processed" confirmation message in the makeCredit() and makeDebt() methods in the 
@@ -66,7 +66,7 @@ creates new buttons and deals with the event handling into a new method.
 - Another way I would refactor the code is by including exception handling of certain cases such as when the user enters
 an incorrect type for a certain value, when the user inputs a negative dollar amount as the initial balance, if the user
 enters a negative amount to make a transaction with, or if the user enters an amount greater than the balance to make a 
-debt. This would reduce duplications in certain methods by extracting behaviour of what to do when an exceptional case 
+debt. This would reduce duplications in certain methods by extracting behaviour related to what to do when an exceptional case 
 is encountered and would improve functionality of the code by preventing it from crashing in exceptional cases.
 - An additional refactoring I would perform is renaming the AccountsList class to something more relevant and 
 descriptive rather than simply having a name that states it is a list of accounts.
