@@ -30,20 +30,7 @@ The following are some **user stories** to describe how someone can use this app
 - As a user, I want to be able to save my accounts list to file.
 - As a user, I want to be able to load my accounts list from file.
 
-# Phase 4: Task 2
-Sat Nov 26 12:07:56 PST 2022
-<br>Added Account: Account Id: 1, Account Name: Radhika Bajaj, Account Balance: 1000.0
-
-Sat Nov 26 12:08:05 PST 2022
-<br>Added Account: Account Id: 2, Account Name: John Smith, Account Balance: 100.0
-
-Sat Nov 26 12:08:22 PST 2022
-<br>Added Account: Account Id: 3, Account Name: Emily Wood, Account Balance: 3.0
-
-Sat Nov 26 12:08:27 PST 2022
-<br>Removed Account: Account Id: 2, Account Name: John Smith, Account Balance: 100.0
-
-# Phase 4: Task 3
+## Future Changes
 - To increase cohesion in my project and to make responsibilities of classes more specific, I would refactor the private 
 class MakeTransactionAction by splitting it up into two different classes with one that performs a credit and another 
 that performs a debt. In addition to making the functionalities of classes more specific, this would make the code easier to 
