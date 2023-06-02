@@ -30,16 +30,6 @@ The following are some **user stories** to describe how someone can use this app
 - As a user, I want to be able to save my accounts list to file.
 - As a user, I want to be able to load my accounts list from file.
 
-# Instructions for Grader
-- You can generate the first required event related to adding Xs to a Y by clicking the button labelled "Add Account" 
-in the menu panel.
-- You can generate the second required event related to adding Xs to a Y by clicking the button labelled 
-"Remove Account" in the menu panel
-- You can locate my visual component by running the application and viewing the splash screen displayed at the start of
-the program
-- You can save the state of my application by clicking the button labelled "Save Data" in the menu panel
-- You can reload the state of my application by clicking the button labelled "Load Data" in the menu panel
-
 # Phase 4: Task 2
 Sat Nov 26 12:07:56 PST 2022
 <br>Added Account: Account Id: 1, Account Name: Radhika Bajaj, Account Balance: 1000.0
