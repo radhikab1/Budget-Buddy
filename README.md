@@ -2,13 +2,13 @@
 
 ## About
 ▪ Developed a Java application that allows users to manage and access their financial information via a GUI
-designed using Java Swing
-▪ Created JSON classes for the user to track transactions and balances by saving and loading files
+designed using Java Swing<br>
+▪ Created JSON classes for the user to track transactions and balances by saving and loading files<br>
 ▪ Tested functionality by writing ~30 JUnit test cases to enforce robustness of program models
 
 ## Skills Used:
-▪ Java
-▪ Java Swing GUI
+▪ Java<br>
+▪ Java Swing GUI<br>
 ▪ JUnit
 
 ## The Application
