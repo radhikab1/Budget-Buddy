@@ -1,6 +1,17 @@
 # Budget Buddy: A Financial Management Tool
 
-## About the Application
+## About
+▪ Developed a Java application that allows users to manage and access their financial information via a GUI
+designed using Java Swing
+▪ Created JSON classes for the user to track transactions and balances by saving and loading files
+▪ Tested functionality by writing ~30 JUnit test cases to enforce robustness of program models
+
+## Skills Used:
+▪ Java
+▪ Java Swing GUI
+▪ JUnit
+
+## The Application
 The purpose of this application is to track one's *budget* and manage one's *finances*. Specifically, the application 
 will allow its user to create a new account and add it to a list of accounts. The user will then be able to view the 
 list of all accounts in the application and their total **account balance**. The user will also be able to select an 
